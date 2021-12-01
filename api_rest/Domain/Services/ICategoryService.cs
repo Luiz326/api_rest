@@ -7,7 +7,7 @@ using api_rest.Domain.Models;
 
 namespace api_rest.Domain.Services
 {
-    public interface ICategoryService
+    interface ICategoryService
     {
         Task<IEnumerable<Category>> ListAsync();
     }
