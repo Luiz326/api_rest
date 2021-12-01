@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using api_rest.Domain.Services;
 using api_rest.Domain.Models;
 using AutoMapper;
@@ -29,6 +29,23 @@ namespace api_rest.Controllers
             var categories = await _categoryService.ListAsync();
             var resources = _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryResource>>(categories);
             return resources;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] SaveCategoryResource resource)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessages());
+
+            var category = _mapper.Map<SaveCategoryResource, Category>(resource);
+            var result = await _categoryService.SaveAsync(category);
+
+            if (!result.Success)
+                return BadRequest(result.Message);
+
+            var categoryResource = _mapper.Map<Category, CategoryResource>(result.Category);
+
+            return Ok(categoryResource);
         }
     }
 }
