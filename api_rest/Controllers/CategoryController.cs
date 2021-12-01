@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using api_rest.Domain.Services;
 using api_rest.Domain.Models;
+using AutoMapper;
+using api_rest.Resources;
 
 namespace api_rest.Controllers
 {
@@ -12,18 +14,21 @@ namespace api_rest.Controllers
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
+        private readonly IMapper _mapper;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService , IMapper mapper)
         {
             _categoryService = categoryService;
+            _mapper = mapper;
         }
        
         [HttpGet]
 
-        public async Task<IEnumerable<Category>> GetAllAsync()
+        public async Task<IEnumerable<CategoryResource>> GetAllAsync()
         {
             var categories = await _categoryService.ListAsync();
-            return categories;
+            var resources = _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryResource>>(categories);
+            return resources;
         }
     }
 }
