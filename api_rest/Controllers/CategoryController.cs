@@ -7,6 +7,7 @@ using api_rest.Domain.Services;
 using api_rest.Domain.Models;
 using AutoMapper;
 using api_rest.Resources;
+using api_rest.Extensions;
 
 namespace api_rest.Controllers
 {
