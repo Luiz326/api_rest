@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace api_rest.Domain.Repositories
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
         Task CompleteAsync();
     }

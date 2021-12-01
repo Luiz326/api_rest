@@ -39,6 +39,7 @@ namespace api_rest
             services.AddScoped<ICategoryService, CategoryService>();
 
             services.AddAutoMapper();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
