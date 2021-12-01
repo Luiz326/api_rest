@@ -3,6 +3,7 @@ using api_rest.Domain.Services;
 using api_rest.Persistence.Contexts;
 using api_rest.Persistence.Repositories;
 using api_rest.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +37,8 @@ namespace api_rest
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
+
+            services.AddAutoMapper();
         }
 
         public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
