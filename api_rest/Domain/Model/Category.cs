@@ -6,7 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api_rest.Domain.Model
 {
-    public class Class
+    public class Category
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public IList<Product> Products { get; set; } = new List<Product>();
     }
 }
