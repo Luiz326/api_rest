@@ -36,13 +36,8 @@ namespace api_rest.Services
             }
             catch (Exception ex)
             {
-                return new SaveCategoryResponse($"An error occurred when saving the category: {ex.Message}");
+                return new SaveCategoryResponse($"An error ocurred when saving the category: {ex.Message}");
             }
-        }
-
-        Task<SaveCategoryResponse> ICategoryService.SaveAsync(Category category)
-        {
-            throw new NotImplementedException();
         }
     }
 }
