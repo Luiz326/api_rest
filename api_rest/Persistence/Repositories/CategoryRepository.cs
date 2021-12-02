@@ -29,9 +29,17 @@ namespace api_rest.Persistence.Repositories
         {
             return await _context.Categories.FindAsync(id);
         }
+
         public void Update(Category category)
         {
             _context.Categories.Update(category);
         }
+
+        public void Remove(Category category)
+        {
+            _context.Categories.Remove(category);
+        }
+
+
     }
 }
